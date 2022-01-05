@@ -4,6 +4,19 @@ const ctx = canvas.getContext("2d");
 let cw = window.innerWidth;
 let ch = window.innerHeight;
 
+
+canvas.width = cw;
+canvas.height = ch;
+
+
+window.addEventListener('resize', function(event) {
+    cw = window.innerWidth;
+    ch = window.innerHeight;
+    canvas.width = cw
+    canvas.height = ch;
+    console.log(cw, ch)
+}, true);
+
 let charArr = [
   "a",
   "b",
@@ -72,8 +85,7 @@ let maxCharCount = 300;
 let fallingCharArr = [];
 let fontSize = 13;
 let maxColumns = cw / fontSize;
-canvas.width = cw;
-canvas.height = ch;
+
 
 let frames = 0;
 
