@@ -14,6 +14,7 @@ window.addEventListener('resize', function(event) {
     ch = window.innerHeight;
     canvas.width = cw
     canvas.height = ch;
+    maxColumns = cw / fontSize;
     console.log(cw, ch)
 }, true);
 
