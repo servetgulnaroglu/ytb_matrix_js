@@ -1,14 +1,12 @@
 const canvas = document.getElementById("canvas");
 const canvas2D = canvas.getContext("2d");
-const charArray = ["T", "A", "B", "A"];
-
-/*[
+const charArray = [
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
     "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 
     "1", "2", "3", "4", "5", "6", "7", "8", 
     "A", "B", "Г", "Δ", "Є", "Z", "H", "Ѳ", "I", "K", "Λ", "M", //Greek Alphabet
     "N", "Ξ", "O", "П", "P", "Σ", "T", "Y", "Φ", "X", "	Ψ", "Ω",
-]*/
+]
 
 let screenHeight = window.innerHeight;
 let screenWidth = window.innerWidth;
