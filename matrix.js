@@ -98,7 +98,7 @@ class FallingChar {
 
   draw(ctx) {
     this.value =
-      charArr[Math.floor(Math.random() * (charArr.length - 1))].toUpperCase();
+      charArr[Math.floor(Math.random() * charArr.length)].toUpperCase();
     this.speed = (Math.random() * fontSize * 3) / 4 + (fontSize * 3) / 4;
 
     ctx.fillStyle = "rgba(0,255,0)";
