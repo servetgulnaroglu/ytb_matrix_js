@@ -14,11 +14,11 @@ body {
 }
 
 #text-area {
-    background-color: lawngreen;
-    border: greenyellow solid 1px;
+    background-color: black;
+    border: black solid 1px;
     border-radius:10px;
-    box-shadow: 0px 0px 20px 5px green;
-    color: black;
+    box-shadow: 0px 0px 20px 5px lawngreen;
+    color: chartreuse;
     font-family: "press start 2P", monospace;
     font-size:16px;
     height:1rem;
@@ -26,12 +26,12 @@ body {
     position:absolute;
         top:50vh;
     text-align: center;
-    width:25vw;
+    min-width:25vw;
     visibility:hidden;
 }
 
 #text-area:focus {
-    box-shadow: 0px 0px 50px 10px lime;
+    box-shadow: 0px 0px 40px 10px greenyellow;
     outline:none;
 }
 
