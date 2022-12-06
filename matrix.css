@@ -17,14 +17,15 @@ body {
     border: black solid 1px;
     border-radius:100px;
     box-shadow: 0px 0px 20px 5px green;
-    color: lime;
-    font-family: "press start 2P", monospace;
-    font-size:12px;
+    color: chartreuse;
+    font-family: "jura", "press start 2P", monospace;
+    font-size:16px;
     height:1rem;
     opacity:0.7;
     position:absolute;
+        top:50vh;
     text-align: center;
-    width:25vw;
+    min-width:25vw;
     visibility:hidden;
 }
 
