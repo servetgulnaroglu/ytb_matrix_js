@@ -9,15 +9,15 @@ body {
 }
 
 #canvas {
-    min-height: 100vh;
-    min-width: 100vw;
+    min-height:100vh;
+    min-width:100vw;
 }
 
 #text-area {
     background-color: rgb(0,40,0);
     border: black solid 1px;
     border-radius:10px;
-    box-shadow: 0px 0px 20px 5px lawngreen;
+    box-shadow: 0px 0px 25px 5px lawngreen;
     color: chartreuse;
     font-family: "press start 2P", monospace;
     font-size:16px;
@@ -31,7 +31,7 @@ body {
 }
 
 #text-area:focus {
-    box-shadow: 0px 0px 40px 10px greenyellow;
+    box-shadow: 0px 0px 50px 10px greenyellow;
     outline:none;
 }
 
