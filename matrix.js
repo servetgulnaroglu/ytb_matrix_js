@@ -3,26 +3,26 @@ const canvas = document.getElementById("canvas");
 const canvas2D = canvas.getContext("2d");
 const textArea = document.getElementById("text-area");
 
+let allow = true;
 let fallArr = [];
 let fontSize = 13;
 let frames = 0;
 let limit = 275;
-let time = 0;
 
 let maxColumns;
 let screenHeight;
 let screenWidth;
-let user; 
-
+let time;
+let timer;
+let user;
+ 
 let arabicNumbers = "012345678901234567890123456789012345678901234567890123456789".split("");
 let chineseAlphabet = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
 let greekAlphabet = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩ".split("");
 let romanAlphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".split("");
 let romanCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-let matrix = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
-
-matrix = matrix.split(",");
+let matrix = ( arabicNumbers + chineseAlphabet + greekAlphabet + romanAlphabet + romanCap ).split(",");
 
 let charArr = matrix;
 
@@ -40,7 +40,7 @@ function displayOn() {
 textArea.addEventListener("input", function() {
 
     user = textArea.value;
-    time += 1000;
+    time = 10000;
 
     if(user == "") {
 
@@ -49,16 +49,9 @@ textArea.addEventListener("input", function() {
     } else if(user != undefined) {
 
         charArr = user.split("");
-        
     }
-    
-    setTimeout(function() {
-
-        textArea.style.visibility = "hidden";
-
-    }, 10000 + time); //ten seconds + extra
 });
-    
+
 
 //Returns a random number within a chosen range
 function randomRange(min,max) {
@@ -131,16 +124,28 @@ let update = () => {
 //text box becomes visible on click
 body.addEventListener("click", function() {
 
+    time = 10000;
+
     if(textArea.style.visibility == "hidden") {
         textArea.style.visibility = "visible";
 
-        setTimeout(function() {
-            if(user == undefined) {
+        if(allow) {
 
-                textArea.style.visibility = "hidden";
-            }
-        }, 10000);
-    } 
+            allow = false;
+
+            timer = setInterval(() => {
+                time -= 1000;
+            
+                if(time <= 0) {
+                
+                    textArea.style.visibility = "hidden";
+                    allow = true;
+                    clearInterval(timer);
+                }
+
+            }, 1000);
+        }
+    }
 });
 
 
