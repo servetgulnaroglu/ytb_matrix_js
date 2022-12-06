@@ -2,7 +2,7 @@ const canvas = document.getElementById("canvas");
 const canvas2D = canvas.getContext("2d");
 
 let fallArr = [];
-let fontSize = 12;
+let fontSize = 13;
 let frames = 0;
 let limit = 275;
 
@@ -15,7 +15,7 @@ let charArr = [
     "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
     "A", "B", "Г", "Δ", "Є", "Z", "H", "Ѳ", "I", "K", "Λ", "M", //Greek Alphabet
-    "N", "Ξ", "O", "П", "P", "Σ", "T", "Y", "Φ", "X", "	Ψ", "Ω"
+    "N", "Ξ", "O", "П", "P", "Σ", "T", "Y", "Φ", "X", "	Ψ", "Ω" 
 ];
 
 
@@ -35,6 +35,31 @@ function randomRange(min,max) {
 //Math.random() returns a random decimal between 0 - 0.99
 }
 
+
+function randomCase() {
+    let dice = randomRange(1,6);
+
+    if(dice == 1) {
+       return charArr[randomRange(0, charArr.length - 1)].toUpperCase();
+    } else {
+       return charArr[randomRange(0, charArr.length - 1)];
+    }
+}
+
+function randomShades() {
+
+    let dice = randomRange(1,100);
+
+    if(dice == 1) {
+        return "chartreuse";
+    } else if(dice == 2) {
+        return "green";
+    } else {
+        return "rgb(0,255,0)";
+    }
+}
+
+
 class Fall {
     constructor(x, y) {
         this.x = x;
@@ -42,12 +67,12 @@ class Fall {
     }
 
     draw(canvas2D) {
-        this.value = charArr[randomRange(0, charArr.length - 1)];
+        this.value = randomCase();
 
         this.speed = ((Math.random() * fontSize * 3) / 4) + ((fontSize * 3) / 4);
 
-        canvas2D.fillStyle = "rgba(0,255,0)";
-        canvas2D.font = fontSize + "px sans-serif";
+        canvas2D.fillStyle = randomShades();
+        canvas2D.font = `${fontSize}px sans-serif`;
         canvas2D.fillText(this.value, this.x, this.y);
         this.y += this.speed;
 
@@ -84,7 +109,6 @@ let update = () => {
 window.addEventListener("resize", function() {
 
    displayOn();
-
 });
 
 
