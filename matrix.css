@@ -1,5 +1,11 @@
 body {
     background-color: black;
+    font-family: "press start 2P";
     margin: 0;
     overflow: hidden;
+}
+
+#canvas {
+    min-height: 100vh;
+    min-width: 100vw;
 }
