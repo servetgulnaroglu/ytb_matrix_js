@@ -14,7 +14,7 @@ body {
 }
 
 #text-area {
-    background-color: black;
+    background-color: rgb(0,50,0);
     border: black solid 1px;
     border-radius:10px;
     box-shadow: 0px 0px 20px 5px lawngreen;
