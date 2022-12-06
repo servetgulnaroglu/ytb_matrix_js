@@ -1,5 +1,8 @@
 body {
     background-color: black;
+    display:flex;
+        align-items: center;
+        justify-content: center;
     font-family: "press start 2P";
     margin: 0;
     overflow: hidden;
@@ -9,3 +12,25 @@ body {
     min-height: 100vh;
     min-width: 100vw;
 }
+
+#text-area {
+    background-color: transparent;
+    border: black solid 1px;
+    border-radius:100px;
+    box-shadow: 0px 0px 20px 5px green;
+    color: lime;
+    font-family: "press start 2P", monospace;
+    font-size:12px;
+    height:1rem;
+    opacity:0.98;
+    position:absolute;
+    text-align: center;
+    width:25vw;
+    visibility:hidden;
+}
+
+#text-area:focus {
+    box-shadow: 0px 0px 50px 10px lime;
+    outline:none;
+}
+
