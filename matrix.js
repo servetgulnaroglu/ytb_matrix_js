@@ -7,7 +7,7 @@ let fallArr = [];
 let fontSize = 13;
 let frames = 0;
 let limit = 275;
-let time = 10000;
+let time = 0;
 
 let matrix;
 let maxColumns;
@@ -20,9 +20,9 @@ let greekAlphabet = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩABГΔЄZHѲIKΛMNΞOПP
 let romanAlphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".split("");
 let romanCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-let code = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
+let ghost = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
 
-let charArr = code.split(",");
+let charArr = ghost.split(",");
 
 //sets height and width of display
 function displayOn() {
@@ -42,7 +42,7 @@ textArea.addEventListener("input", function() {
 
     if(matrix == "") {
 
-        charArr = code;
+        charArr = ghost;
 
     } else if(matrix != undefined) {
 
@@ -54,7 +54,7 @@ textArea.addEventListener("input", function() {
 
         textArea.style.visibility = "hidden";
 
-    }, time); //ten seconds 
+    }, 10000 + time); //ten seconds + extra
 });
     
 
@@ -145,7 +145,9 @@ body.addEventListener("click", function() {
 //reassigns values if screen size changes
 window.addEventListener("resize", function() {
 
-   displayOn();
+    location.reload();
+
+   //displayOn();
 });
 
 
