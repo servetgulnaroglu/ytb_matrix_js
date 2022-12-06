@@ -26,8 +26,8 @@ let charArr = ghost.split(",");
 
 //sets height and width of display
 function displayOn() {
-    screenHeight = window.innerHeight;
-    screenWidth = window.innerWidth;
+    screenHeight = document.documentElement.scrollHeight; //window.innerHeight;
+    screenWidth = document.documentElement.scrollWidth;  //window.innerWidth;
     canvas.height = screenHeight;
     canvas.width = screenWidth;
     maxColumns = screenWidth / fontSize;
@@ -145,9 +145,7 @@ body.addEventListener("click", function() {
 //reassigns values if screen size changes
 window.addEventListener("resize", function() {
 
-    location.reload();
-
-   //displayOn();
+   displayOn();
 });
 
 
