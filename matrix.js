@@ -9,10 +9,10 @@ let frames = 0;
 let limit = 275;
 let time = 0;
 
-let matrix;
 let maxColumns;
 let screenHeight;
-let screenWidth; 
+let screenWidth;
+let user; 
 
 let arabicNumbers = "012345678901234567890123456789012345678901234567890123456789".split("");
 let chineseAlphabet = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
@@ -20,15 +20,16 @@ let greekAlphabet = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩABГΔЄZHѲIKΛMNΞOПP
 let romanAlphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".split("");
 let romanCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-let ghost = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
-ghost = ghost.split(",");
+let matrix = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
 
-let charArr = ghost;
+matrix = matrix.split(",");
+
+let charArr = matrix;
 
 //sets height and width of display
 function displayOn() {
-    screenHeight = document.documentElement.scrollHeight; //window.innerHeight;
-    screenWidth = document.documentElement.scrollWidth;  //window.innerWidth;
+    screenHeight = document.documentElement.scrollHeight;
+    screenWidth = document.documentElement.scrollWidth; 
     canvas.height = screenHeight;
     canvas.width = screenWidth;
     maxColumns = screenWidth / fontSize;
@@ -38,16 +39,16 @@ function displayOn() {
 
 textArea.addEventListener("input", function() {
 
-    matrix = textArea.value;
+    user = textArea.value;
     time += 1000;
 
-    if(matrix == "") {
+    if(user == "") {
 
-        charArr = ghost;
+        charArr = matrix;
 
-    } else if(matrix != undefined) {
+    } else if(user != undefined) {
 
-        charArr = matrix.split("");
+        charArr = user.split("");
         
     }
     
@@ -134,7 +135,7 @@ body.addEventListener("click", function() {
         textArea.style.visibility = "visible";
 
         setTimeout(function() {
-            if(matrix == undefined) {
+            if(user == undefined) {
 
                 textArea.style.visibility = "hidden";
             }
