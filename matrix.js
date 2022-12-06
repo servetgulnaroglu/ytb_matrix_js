@@ -39,7 +39,7 @@ function displayOn() {
 textArea.addEventListener("input", function() {
 
     matrix = textArea.value;
-    time += 2000;
+    time += 1000;
 
     if(matrix == "") {
 
