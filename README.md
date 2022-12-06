@@ -1,5 +1,4 @@
 # Speak With The Matrix
-(Under Construction)
 
 Tell the matrix what to say, by writing what you want to say.
 
