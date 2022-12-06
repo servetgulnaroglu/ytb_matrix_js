@@ -3,7 +3,6 @@ body {
     display:flex;
         align-items: center;
         justify-content: center;
-    font-family: "press start 2P";
     margin: 0;
     overflow: hidden;
 }
@@ -14,7 +13,7 @@ body {
 }
 
 #text-area {
-    background-color: transparent;
+    background-color: black;
     border: black solid 1px;
     border-radius:100px;
     box-shadow: 0px 0px 20px 5px green;
@@ -22,7 +21,7 @@ body {
     font-family: "press start 2P", monospace;
     font-size:12px;
     height:1rem;
-    opacity:0.98;
+    opacity:0.7;
     position:absolute;
     text-align: center;
     width:25vw;
