@@ -21,8 +21,9 @@ let romanAlphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".split
 let romanCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 let ghost = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
+ghost = ghost.split(",");
 
-let charArr = ghost.split(",");
+let charArr = ghost;
 
 //sets height and width of display
 function displayOn() {
