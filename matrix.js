@@ -22,8 +22,7 @@ let romanCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 let code = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
 
-let charArr = code;
-
+let charArr = code.split(",");
 
 //sets height and width of display
 function displayOn() {
