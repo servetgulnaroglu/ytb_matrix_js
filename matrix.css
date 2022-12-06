@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    cursor:pointer;
     display:flex;
         align-items: center;
         justify-content: center;
@@ -13,19 +14,19 @@ body {
 }
 
 #text-area {
-    background-color: black;
-    border: black solid 1px;
-    border-radius:100px;
+    background-color: lawngreen;
+    border: greenyellow solid 1px;
+    border-radius:10px;
     box-shadow: 0px 0px 20px 5px green;
-    color: chartreuse;
-    font-family: "jura", "press start 2P", monospace;
+    color: black;
+    font-family: "press start 2P", monospace;
     font-size:16px;
     height:1rem;
     opacity:0.7;
     position:absolute;
         top:50vh;
     text-align: center;
-    min-width:25vw;
+    width:25vw;
     visibility:hidden;
 }
 
