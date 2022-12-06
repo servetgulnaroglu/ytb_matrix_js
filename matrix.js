@@ -10,13 +10,14 @@ let maxColumns;
 let screenHeight;
 let screenWidth; 
 
-let charArr = [
-    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", //Roman Alphabet
-    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-    "A", "B", "Г", "Δ", "Є", "Z", "H", "Ѳ", "I", "K", "Λ", "M", //Greek Alphabet
-    "N", "Ξ", "O", "П", "P", "Σ", "T", "Y", "Φ", "X", "	Ψ", "Ω" 
-];
+let arabicNumbers = "012345678901234567890123456789012345678901234567890123456789".split("");
+let chineseAlphabet = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
+let greekAlphabet = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩ".split("");
+let romanAlphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".split("");
+let romanCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+
+let charArr = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
 
 
 //sets height and width of display
@@ -35,16 +36,6 @@ function randomRange(min,max) {
 //Math.random() returns a random decimal between 0 - 0.99
 }
 
-
-function randomCase() {
-    let dice = randomRange(1,6);
-
-    if(dice == 1) {
-       return charArr[randomRange(0, charArr.length - 1)].toUpperCase();
-    } else {
-       return charArr[randomRange(0, charArr.length - 1)];
-    }
-}
 
 function randomShades() {
 
@@ -67,7 +58,7 @@ class Fall {
     }
 
     draw(canvas2D) {
-        this.value = randomCase();
+        this.value = charArr[randomRange(0, charArr.length - 1)];
 
         this.speed = ((Math.random() * fontSize * 3) / 4) + ((fontSize * 3) / 4);
 
@@ -85,6 +76,7 @@ class Fall {
 }
 
 let update = () => {
+
     if(fallArr.length < limit) {
 
         let character = new Fall(Math.floor(Math.random() * maxColumns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
