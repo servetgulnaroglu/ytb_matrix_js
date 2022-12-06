@@ -1,11 +1,15 @@
+const body = document.querySelector(".body");
 const canvas = document.getElementById("canvas");
 const canvas2D = canvas.getContext("2d");
+const textArea = document.getElementById("text-area");
 
 let fallArr = [];
 let fontSize = 13;
 let frames = 0;
 let limit = 275;
+let time = 10000;
 
+let matrix;
 let maxColumns;
 let screenHeight;
 let screenWidth; 
@@ -16,8 +20,9 @@ let greekAlphabet = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩABГΔЄZHѲIKΛMNΞOПP
 let romanAlphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".split("");
 let romanCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
+let code = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
 
-let charArr = arabicNumbers + greekAlphabet + romanAlphabet + chineseAlphabet + romanCap;
+let charArr = code;
 
 
 //sets height and width of display
@@ -27,7 +32,32 @@ function displayOn() {
     canvas.height = screenHeight;
     canvas.width = screenWidth;
     maxColumns = screenWidth / fontSize;
+    textArea.style.visibility = "hidden";
 }
+
+
+textArea.addEventListener("input", function() {
+
+    matrix = textArea.value;
+    time += 2000;
+
+    if(matrix == "") {
+
+        charArr = code;
+
+    } else if(matrix != undefined) {
+
+        charArr = matrix.split("");
+        
+    }
+    
+    setTimeout(function() {
+
+        textArea.style.visibility = "hidden";
+
+    }, time); //ten seconds 
+});
+    
 
 //Returns a random number within a chosen range
 function randomRange(min,max) {
@@ -95,6 +125,22 @@ let update = () => {
     requestAnimationFrame(update);
     frames++;
 };
+
+
+//text box becomes visible on click
+body.addEventListener("click", function() {
+
+    if(textArea.style.visibility == "hidden") {
+        textArea.style.visibility = "visible";
+
+        setTimeout(function() {
+            if(matrix == undefined) {
+
+                textArea.style.visibility = "hidden";
+            }
+        }, 10000);
+    } 
+});
 
 
 //reassigns values if screen size changes
