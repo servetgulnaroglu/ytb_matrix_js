@@ -41,7 +41,6 @@ function displayOn() {
     canvas.width = screenWidth;
     maxColumns = screenWidth / fontSize;
     textArea.style.visibility = "hidden";
-
     setlimit();
 }
 
@@ -193,7 +192,7 @@ textArea.addEventListener("input", function() {
 //reassigns values if screen size changes
 window.addEventListener("resize", function() {
 
-    //displayOn();
+    displayOn();
 
 });
 
