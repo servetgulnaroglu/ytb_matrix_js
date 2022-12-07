@@ -130,12 +130,7 @@ const keymaker = () => {
 
         fallArr.push(character); 
 
-    } else if(fallArr.length > limit) {
-
-        fallArr.pop();
-
     }
-
 
     canvas2D.fillStyle = "rgba(0,0,0,0.05)";
     canvas2D.fillRect(0, 0, screenWidth, screenHeight);
@@ -193,15 +188,15 @@ textArea.addEventListener("input", function() {
 });
 
 
-//resets values if screen size changes
+//timeout prevents infite loop when loading page
 setTimeout(function() {
-
+ //no other way to maintain correct character population on size change   
     window.addEventListener("resize", function() {
 
-        location.reload();
-
+        location.reload(); //resets values if screen size changes
     });
-}, 2000);
+
+}, 100);
 
 
 //on screenload runs program
