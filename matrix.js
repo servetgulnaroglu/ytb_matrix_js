@@ -17,7 +17,7 @@ let timer;
 let user;
 
 let arabic = "ضصثقفغعهخحجشسيبلاتنمكةءظطذدزروى".split("");
-let arabicNum = "012345678901234567890123456789".split("");
+let arabicNum = "01234567890123456789".split("");
 let chinese = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
 let greek = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩ".split("");
 let hindi = "औऐआईऊभऋघधझढओएअइउफृखथछठँऑज्ञणक्ष़शषौौैाी".split("");
