@@ -1,6 +1,5 @@
 body {
     background-color: black;
-    cursor:pointer;
     display:flex;
         align-items: center;
         justify-content: center;
@@ -19,6 +18,7 @@ body {
     border-radius:10px;
     box-shadow: 0px 0px 25px 5px lawngreen;
     color: chartreuse;
+    cursor: pointer;
     font-family: "press start 2P", monospace;
     font-size:16px;
     height:1rem;
@@ -34,4 +34,3 @@ body {
     box-shadow: 0px 0px 50px 10px greenyellow;
     outline:none;
 }
-
