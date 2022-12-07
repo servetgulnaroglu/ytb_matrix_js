@@ -22,11 +22,13 @@ body {
     font-family: "press start 2P", monospace;
     font-size:16px;
     height:1rem;
+    min-width:225px;
+    max-width:25vw;
     opacity:0.7;
     position:absolute;
         top:50vh;
     text-align: center;
-    min-width:25vw;
+    width:100%;
     visibility:hidden;
 }
 
