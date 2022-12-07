@@ -15,14 +15,18 @@ let screenWidth;
 let time;
 let timer;
 let user;
- 
-let arabicNumbers = "012345678901234567890123456789012345678901234567890123456789".split("");
-let chineseAlphabet = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
-let greekAlphabet = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩ".split("");
-let romanAlphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz".split("");
-let romanCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-let matrix = ( arabicNumbers + chineseAlphabet + greekAlphabet + romanAlphabet + romanCap ).split(",");
+let arabic = "ضصثقفغعهخحجشسيبلاتنمكةءظطذدزروى".split("");
+let arabicNum = "012345678901234567890123456789".split("");
+let chinese = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
+let greek = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩ".split("");
+let hindi = "औऐआईऊभऋघधझढओएअइउफृखथछठँऑज्ञणक्ष़शषौौैाी".split("");
+let japanese = "あかさたなはまやらわ".split("");
+let korean = "ㅂㅈㄷㄱ쇼ㅕㅑㅐㅔㅁㄴㅇㄹ호ㅓㅏㅣㅋㅌㅊ퓨ㅜㅡ".split("");
+let roman = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let russian = "ЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ".split("");
+
+let matrix = (arabic + arabicNum + chinese + greek + hindi + japanese + korean + roman + russian).split(",");
 
 let charArr = matrix;
 
