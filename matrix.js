@@ -182,7 +182,7 @@ textArea.addEventListener("input", function() {
 //reassigns values if screen size changes
 window.addEventListener("resize", function() {
 
-    //location.reload();
+    displayOn();
 
 });
 
