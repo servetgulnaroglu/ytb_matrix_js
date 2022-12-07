@@ -7,9 +7,9 @@ let allow = true; //use for Interval
 let fallArr = [];
 let fontSize = 13;
 let frames = 0;
-let limit = 275; //limit of characters on screen
 
 let off; //to set and clear interval
+let limit; //limit of characters on screen
 let maxColumns;
 let screenHeight;
 let screenWidth;
@@ -37,12 +37,31 @@ let charArr = matrix;
 function displayOn() {
     screenHeight = document.documentElement.scrollHeight;
     screenWidth = document.documentElement.scrollWidth; 
+    setlimit();
+
     canvas.height = screenHeight;
     canvas.width = screenWidth;
     maxColumns = screenWidth / fontSize;
     textArea.style.visibility = "hidden";
+}
 
-    console.log(screenWidth);
+
+function setlimit() {
+    if(screenWidth > 1400) {
+        limit = 300;
+    } else if(screenWidth > 1200 && screenWidth < 1400) {
+        limit = 250;
+    } else if(screenWidth > 1000 && screenWidth < 1200) {
+        limit = 220;
+    } else if(screenWidth > 800 && screenWidth < 1000) {
+        limit = 190;
+    } else if(screenWidth > 600 && screenWidth < 800) {
+        limit = 160;
+    } else if(screenWidth > 400 && screenWidth < 600) {
+        limit = 130;
+    } else if(screenWidth < 400) {
+        limit = 100;
+    }
 }
 
 
@@ -94,11 +113,19 @@ class Artitect {
 
 const keymaker = () => {
 
+   let character;
+
     if(fallArr.length < limit) {
 
-        let character = new Artitect(Math.floor(Math.random() * maxColumns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
+        character = new Artitect(Math.floor(Math.random() * maxColumns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
 
-        fallArr.push(character);
+        fallArr.push(character); 
+    }
+
+    if(fallArr.length > limit) {
+
+        fallArr.pop();
+        
     }
 
     canvas2D.fillStyle = "rgba(0,0,0,0.05)";
@@ -160,7 +187,7 @@ textArea.addEventListener("input", function() {
 //reassigns values if screen size changes
 window.addEventListener("resize", function() {
 
-   displayOn();
+    displayOn();
 
 });
 
@@ -169,6 +196,7 @@ window.addEventListener("resize", function() {
 window.onload = function() {
 
     displayOn();
-
+    
     keymaker();
+
 };
