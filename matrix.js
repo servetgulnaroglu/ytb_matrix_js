@@ -3,20 +3,21 @@ const canvas = document.getElementById("canvas");
 const canvas2D = canvas.getContext("2d");
 const textArea = document.getElementById("text-area");
 
-let allow = true;
+let allow = true; //use for Interval
 let fallArr = [];
 let fontSize = 13;
 let frames = 0;
-let limit = 275;
+let limit = 275; //limit of characters on screen
 
 let maxColumns;
 let screenHeight;
 let screenWidth;
-let time;
-let timer;
-let user;
+let time; //used to time interval
+let off; //use to set and clear interval
+let user; //for user input
 
-let arabic = "ضصثقفغعهخحجشسيبلاتنمكةءظطذدزروى".split("");
+//alphabets of different languages
+let arabic = "ضصثقفغعهخحجشسيبلاتنمكةءظطذدزروى".split(""); 
 let arabicNum = "01234567890123456789".split("");
 let chinese = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
 let greek = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩ".split("");
@@ -26,8 +27,10 @@ let korean = "ㅂㅈㄷㄱ쇼ㅕㅑㅐㅔㅁㄴㅇㄹ호ㅓㅏㅣㅋㅌㅊ퓨ㅜ
 let roman = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 let russian = "ЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ".split("");
 
+//makes for a modifiable array
 let matrix = (arabic + arabicNum + chinese + greek + hindi + japanese + korean + roman + russian).split(",");
 
+//charcters displayed on screen
 let charArr = matrix;
 
 //sets height and width of display
@@ -38,23 +41,9 @@ function displayOn() {
     canvas.width = screenWidth;
     maxColumns = screenWidth / fontSize;
     textArea.style.visibility = "hidden";
+
+    console.log(screenWidth);
 }
-
-
-textArea.addEventListener("input", function() {
-
-    user = textArea.value;
-    time = 10000;
-
-    if(user == "") {
-
-        charArr = matrix;
-
-    } else if(user != undefined) {
-
-        charArr = user.split("");
-    }
-});
 
 
 //Returns a random number within a chosen range
@@ -66,7 +55,6 @@ function randomRange(min,max) {
 
 
 function randomShades() {
-
     let dice = randomRange(1,100);
 
     if(dice == 1) {
@@ -79,7 +67,7 @@ function randomShades() {
 }
 
 
-class Fall {
+class Artitect {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -103,11 +91,11 @@ class Fall {
     }
 }
 
-let update = () => {
+const keymaker = () => {
 
     if(fallArr.length < limit) {
 
-        let character = new Fall(Math.floor(Math.random() * maxColumns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
+        let character = new Artitect(Math.floor(Math.random() * maxColumns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
 
         fallArr.push(character);
     }
@@ -120,35 +108,50 @@ let update = () => {
         fallArr[i].draw(canvas2D);
     }
 
-    requestAnimationFrame(update);
+    requestAnimationFrame(keymaker);
     frames++;
 };
 
 
-//text box becomes visible on click
+//textarea becomes visible on click
 body.addEventListener("click", function() {
 
-    time = 10000;
+    time = 10000; //sets & resets time
 
     if(textArea.style.visibility == "hidden") {
         textArea.style.visibility = "visible";
 
         if(allow) {
 
-            allow = false;
+            allow = false; //prevents multiple intervals
 
-            timer = setInterval(() => {
+            off = setInterval(() => {
                 time -= 1000;
             
                 if(time <= 0) {
-                
                     textArea.style.visibility = "hidden";
+                    clearInterval(off);
                     allow = true;
-                    clearInterval(timer);
                 }
 
             }, 1000);
         }
+    }
+});
+
+ 
+textArea.addEventListener("input", function() {
+
+    user = textArea.value; //user input
+    time = 10000; //resets time to hide textarea
+
+    if(user == "") {
+
+        charArr = matrix; //original array
+
+    } else if(user != undefined) {
+
+        charArr = user.split(""); //user input fed to array
     }
 });
 
@@ -157,12 +160,14 @@ body.addEventListener("click", function() {
 window.addEventListener("resize", function() {
 
    displayOn();
+
 });
 
 
+//on screenload runs program
 window.onload = function() {
 
     displayOn();
 
-    update();
+    keymaker();
 };
