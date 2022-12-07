@@ -188,15 +188,14 @@ textArea.addEventListener("input", function() {
 });
 
 
-//timeout prevents infite loop when loading page
 setTimeout(function() {
- //no other way to maintain correct character population on size change   
+ //Only way found to maintain correct character population on screen size change   
     window.addEventListener("resize", function() {
 
         location.reload(); //resets values if screen size changes
     });
 
-}, 50);
+}, 50); //timeout prevents infite loop when loading page
 
 
 //on screenload runs program
@@ -205,5 +204,4 @@ window.onload = function() {
     displayOn();
     
     keymaker();
-
 };
