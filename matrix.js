@@ -37,30 +37,40 @@ let charArr = matrix;
 function displayOn() {
     screenHeight = document.documentElement.scrollHeight;
     screenWidth = document.documentElement.scrollWidth; 
-    setlimit();
-
     canvas.height = screenHeight;
     canvas.width = screenWidth;
     maxColumns = screenWidth / fontSize;
     textArea.style.visibility = "hidden";
+
+    setlimit();
 }
 
 
 function setlimit() {
     if(screenWidth > 1400) {
-        limit = 300;
-    } else if(screenWidth > 1200 && screenWidth < 1400) {
-        limit = 250;
-    } else if(screenWidth > 1000 && screenWidth < 1200) {
+        limit = 280;
+    } else if(screenWidth > 1300 && screenWidth <= 1400) {
+        limit = 260;
+    } else if(screenWidth > 1200 && screenWidth <= 1300) {
+        limit = 240;
+    } else if(screenWidth > 1100 && screenWidth <= 1200) {
         limit = 220;
-    } else if(screenWidth > 800 && screenWidth < 1000) {
-        limit = 190;
-    } else if(screenWidth > 600 && screenWidth < 800) {
+    } else if(screenWidth > 1000 && screenWidth <= 1100) {
+        limit = 200;
+    } else if(screenWidth > 900 && screenWidth <= 1000) {
+        limit = 180;
+    } else if(screenWidth > 800 && screenWidth <= 900) {
         limit = 160;
-    } else if(screenWidth > 400 && screenWidth < 600) {
-        limit = 130;
-    } else if(screenWidth < 400) {
+    } else if(screenWidth > 700 && screenWidth <= 800) {
+        limit = 140;
+    } else if(screenWidth > 600 && screenWidth <= 700) {
+        limit = 120;
+    } else if(screenWidth > 500 && screenWidth <= 600) {
         limit = 100;
+    } else if(screenWidth > 400 && screenWidth <= 500) {
+        limit = 80;
+    } else if(screenWidth <= 400) {
+        limit = 60;
     }
 }
 
@@ -120,6 +130,11 @@ const keymaker = () => {
         character = new Artitect(Math.floor(Math.random() * maxColumns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
 
         fallArr.push(character); 
+
+    } else if(fallArr.length > limit) {
+
+        fallArr.pop();
+
     }
 
 
