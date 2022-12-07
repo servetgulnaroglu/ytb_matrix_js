@@ -122,6 +122,7 @@ const keymaker = () => {
         fallArr.push(character); 
     }
 
+
     canvas2D.fillStyle = "rgba(0,0,0,0.05)";
     canvas2D.fillRect(0, 0, screenWidth, screenHeight);
 
