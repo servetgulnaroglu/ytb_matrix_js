@@ -196,7 +196,7 @@ setTimeout(function() {
         location.reload(); //resets values if screen size changes
     });
 
-}, 100);
+}, 50);
 
 
 //on screenload runs program
