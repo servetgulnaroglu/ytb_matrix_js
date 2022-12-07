@@ -9,26 +9,26 @@ let fontSize = 13;
 let frames = 0;
 let limit = 275; //limit of characters on screen
 
+let off; //to set and clear interval
 let maxColumns;
 let screenHeight;
 let screenWidth;
 let time; //used to time interval
-let off; //use to set and clear interval
 let user; //for user input
 
 //alphabets of different languages
-let arabic = "ضصثقفغعهخحجشسيبلاتنمكةءظطذدزروى".split(""); 
-let arabicNum = "01234567890123456789".split("");
-let chinese = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
-let greek = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩ".split("");
-let hindi = "औऐआईऊभऋघधझढओएअइउफृखथछठँऑज्ञणक्ष़शषौौैाी".split("");
-let japanese = "あかさたなはまやらわ".split("");
-let korean = "ㅂㅈㄷㄱ쇼ㅕㅑㅐㅔㅁㄴㅇㄹ호ㅓㅏㅣㅋㅌㅊ퓨ㅜㅡ".split("");
-let roman = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-let russian = "ЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ".split("");
+const arabic = "ضصثقفغعهخحجشسيبلاتنمكةءظطذدزروى".split(""); 
+const numbers = "01234567890123456789".split("");
+const chinese = "诶比西迪伊艾弗吉尺杰开勒马娜哦屁吾儿丝提伊吾维豆贝尔维克斯吾贼德".split("");
+const greek = "ABГΔЄZHѲIKΛMNΞOПPΣTYΦXΨΩ".split("");
+const hindi = "औऐआईऊभऋघधझढओएअइउफृखथछठँऑज्ञणक्ष़शषौौैाी".split("");
+const japanese = "あかさたなはまやらわ".split("");
+const korean = "ㅂㅈㄷㄱ쇼ㅕㅑㅐㅔㅁㄴㅇㄹ호ㅓㅏㅣㅋㅌㅊ퓨ㅜㅡ".split("");
+const roman = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const russian = "ЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ".split("");
 
 //makes for a modifiable array
-let matrix = (arabic + arabicNum + chinese + greek + hindi + japanese + korean + roman + russian).split(",");
+const matrix = (arabic + numbers + chinese + greek + hindi + japanese + korean + roman + russian).split(",");
 
 //charcters displayed on screen
 let charArr = matrix;
@@ -54,6 +54,7 @@ function randomRange(min,max) {
 }
 
 
+//shades of green
 function randomShades() {
     let dice = randomRange(1,100);
 
