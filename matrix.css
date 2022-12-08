@@ -14,7 +14,7 @@ body {
 
 footer {
     position:absolute;
-        bottom:25%;
+        bottom:10%;
     text-align: center;
     visibility: hidden;
 }
@@ -24,7 +24,7 @@ footer a {
     font-family: "press start 2p", sans-serif;
     min-width:225px;
     text-decoration: none;
-    text-shadow: 0px 0px 0.5px chartreuse;
+    text-shadow: 0px 0px 1px chartreuse;
 }
 
 #text-area {
