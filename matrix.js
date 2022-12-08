@@ -1,8 +1,8 @@
-const body = document.querySelector("body");
-const canvas = document.querySelector("canvas");
+const body = document.querySelector(".body");
+const canvas = document.getElementById("canvas");
 const canvas2D = canvas.getContext("2d");
-const footer = document.querySelector("footer");
-const textArea = document.querySelector("textarea");
+const footer = document.querySelector(".footer");
+const textArea = document.getElementById("text-area");
 
 let allow = true; //use for Interval
 let fallArr = [];
