@@ -1,6 +1,7 @@
 const body = document.querySelector(".body");
 const canvas = document.getElementById("canvas");
 const canvas2D = canvas.getContext("2d");
+const footer = document.querySelector(".footer");
 const textArea = document.getElementById("text-area");
 
 let allow = true; //use for Interval
@@ -150,6 +151,8 @@ body.addEventListener("click", function() {
 
     time = 10000; //sets & resets time
 
+    footer.style.visibility == "visible" ? footer.style.visibility = "hidden" : footer.style.visibility = "visible";
+
     if(textArea.style.visibility == "hidden") {
         textArea.style.visibility = "visible";
 
@@ -162,6 +165,7 @@ body.addEventListener("click", function() {
             
                 if(time <= 0) {
                     textArea.style.visibility = "hidden";
+                    footer.style.visibility = "hidden";
                     clearInterval(off);
                     allow = true;
                 }
@@ -195,7 +199,7 @@ setTimeout(function() {
         location.reload(); //resets values if screen size changes
     });
 
-}, 50); //timeout prevents infite loop when loading page
+}, 50); //prevents infite loop when loading page
 
 
 //on screenload runs program
