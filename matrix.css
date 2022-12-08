@@ -7,7 +7,7 @@ body {
     overflow: hidden;
 }
 
-#canvas {
+canvas {
     min-height:100vh;
     min-width:100vw;
 }
@@ -28,7 +28,7 @@ footer a {
     text-shadow: 0px 0px 1px chartreuse;
 }
 
-#text-area {
+textarea {
     background-color: rgb(0,40,0);
     border: black solid 1px;
     border-radius:10px;
@@ -48,7 +48,7 @@ footer a {
     visibility:hidden;
 }
 
-#text-area:focus {
+textarea:focus {
     box-shadow: 0px 0px 50px 10px greenyellow;
     outline:none;
 }
