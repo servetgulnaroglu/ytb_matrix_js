@@ -1,8 +1,8 @@
-const body = document.querySelector(".body");
-const canvas = document.getElementById("canvas");
+const body = document.querySelector("body");
+const canvas = document.querySelector("canvas");
 const canvas2D = canvas.getContext("2d");
-const footer = document.querySelector(".footer");
-const textArea = document.getElementById("text-area");
+const footer = document.querySelector("footer");
+const textArea = document.querySelector("textarea");
 
 let allow = true; //use for Interval
 let fallArr = [];
@@ -11,7 +11,7 @@ let frames = 0;
 
 let off; //to set and clear interval
 let limit; //limit of characters on screen
-let maxColumns;
+let columns;
 let screenHeight;
 let screenWidth;
 let time; //used to time interval
@@ -40,37 +40,39 @@ function displayOn() {
     screenWidth = document.documentElement.scrollWidth; 
     canvas.height = screenHeight;
     canvas.width = screenWidth;
-    maxColumns = screenWidth / fontSize;
+    columns = screenWidth / fontSize;
     textArea.style.visibility = "hidden";
-    setlimit();
+    limit = setlimit();
 }
 
 
 function setlimit() {
-    if(screenWidth > 1400) {
-        limit = 280;
+    if(screenWidth > 1500) {
+        return 300;
+    } else if(screenWidth > 1400 && screenWidth <= 1500) {
+        return 280;
     } else if(screenWidth > 1300 && screenWidth <= 1400) {
-        limit = 260;
+        return 260;
     } else if(screenWidth > 1200 && screenWidth <= 1300) {
-        limit = 240;
+        return 240;
     } else if(screenWidth > 1100 && screenWidth <= 1200) {
-        limit = 220;
+        return 220;
     } else if(screenWidth > 1000 && screenWidth <= 1100) {
-        limit = 200;
+        return 200;
     } else if(screenWidth > 900 && screenWidth <= 1000) {
-        limit = 180;
+        return 180;
     } else if(screenWidth > 800 && screenWidth <= 900) {
-        limit = 160;
+        return 160;
     } else if(screenWidth > 700 && screenWidth <= 800) {
-        limit = 140;
+        return 140;
     } else if(screenWidth > 600 && screenWidth <= 700) {
-        limit = 120;
+        return 120;
     } else if(screenWidth > 500 && screenWidth <= 600) {
-        limit = 100;
+        return 100;
     } else if(screenWidth > 400 && screenWidth <= 500) {
-        limit = 80;
+        return 80;
     } else if(screenWidth <= 400) {
-        limit = 60;
+        return 60;
     }
 }
 
@@ -115,7 +117,7 @@ class Artitect {
 
         if(this.y > screenHeight) {
             this.y = ((Math.random() * screenHeight) / 2) - 50;
-            this.x = Math.floor(Math.random() * maxColumns) * fontSize;
+            this.x = Math.floor(Math.random() * columns) * fontSize;
             this.speed = ((-Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
         }
     }
@@ -127,7 +129,7 @@ const keymaker = () => {
 
     if(fallArr.length < limit) {
 
-        character = new Artitect(Math.floor(Math.random() * maxColumns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
+        character = new Artitect(Math.floor(Math.random() * columns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
 
         fallArr.push(character); 
 
