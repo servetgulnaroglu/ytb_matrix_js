@@ -12,6 +12,21 @@ body {
     min-width:100vw;
 }
 
+footer {
+    position:absolute;
+        bottom:5%;
+    text-align: center;
+    visibility: hidden;
+}
+
+footer a {
+    color: black;
+    font-family: "press start 2p", sans-serif;
+    min-width:225px;
+    text-decoration: none;
+    text-shadow: 0px 0px 1px chartreuse;
+}
+
 #text-area {
     background-color: rgb(0,40,0);
     border: black solid 1px;
