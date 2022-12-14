@@ -204,7 +204,7 @@ setTimeout(function() {
             screenWidth = window.innerWidth;
             canvas.height = screenHeight;
             canvas.width = screenWidth;
-        }, 25);
+        }, 50);
     });
 }, 25); 
 
