@@ -204,6 +204,7 @@ setTimeout(function() {
             screenWidth = window.innerWidth;
             canvas.height = window.innerHeight;
             canvas.width = window.innerWidth;
+            columns = screenWidth / fontSize;
         },50);
     });
 }, 25); 
