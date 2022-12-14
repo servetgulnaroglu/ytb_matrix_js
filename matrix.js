@@ -204,7 +204,7 @@ setTimeout(function() {
             screenWidth = document.documentElement.scrollWidth;
             canvas.height = screenHeight;
             canvas.width = screenWidth;
-        }, 200);
+        }, 50);
     });
 }, 25); 
 
