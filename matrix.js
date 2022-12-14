@@ -205,6 +205,7 @@ setTimeout(function() {
             canvas.height = screenHeight;
             canvas.width = screenWidth;
             columns = screenWidth / fontSize;
+            limit = setlimit();
         },50);
     });
 }, 25); 
