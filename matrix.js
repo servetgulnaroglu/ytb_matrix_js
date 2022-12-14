@@ -196,7 +196,6 @@ textArea.addEventListener("input", function() {
 
 //prevents infite loop when loading page on mobile
 setTimeout(function() {
- 
     window.addEventListener("resize", function() {
         
         //Only way found to avoid a canvas resize bug on mobile
