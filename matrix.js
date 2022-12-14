@@ -117,8 +117,8 @@ class Artitect {
 
         if(this.y > screenHeight) {
             this.y = ((Math.random() * screenHeight) / 2) - 50;
-            this.x = Math.floor(Math.random() * columns) * fontSize;
-            this.speed = ((-Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
+            //this.x = Math.floor(Math.random() * columns) * fontSize;
+            //this.speed = ((-Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
         }
     }
 }
@@ -126,13 +126,12 @@ class Artitect {
 const keymaker = () => {
 
    let character;
-
+   
     if(fallArr.length < limit) {
 
         character = new Artitect(Math.floor(Math.random() * columns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
 
         fallArr.push(character); 
-
     }
 
     canvas2D.fillStyle = "rgba(0,0,0,0.05)";
@@ -141,6 +140,7 @@ const keymaker = () => {
     for(let i = 0; i < fallArr.length && frames % 2 == 0; i++) {
 
         fallArr[i].draw(canvas2D);
+        
     }
 
     requestAnimationFrame(keymaker);
@@ -198,7 +198,11 @@ setTimeout(function() {
  //Only way found to maintain correct character population on screen size change   
     window.addEventListener("resize", function() {
 
-        location.reload(); //resets values if screen size changes
+        //location.reload(); //resets values if screen size changes
+        screenHeight = window.innerHeight;
+        screenWidth = window.innerWidth;
+        canvas.height = screenHeight;
+        canvas.width = screenWidth;
     });
 
 }, 50); //prevents infite loop when loading page
