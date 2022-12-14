@@ -204,8 +204,7 @@ setTimeout(function() {
             screenWidth = window.innerWidth;
             canvas.height = screenHeight;
             canvas.width = screenWidth;
-            canvas.style.minHeight = "100vh";
-            canvas.style.minWidth = "100vw";
+            columns = screenWidth / fontSize;
         },50);
     });
 }, 25); 
