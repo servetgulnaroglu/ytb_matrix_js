@@ -202,9 +202,9 @@ setTimeout(function() {
         setTimeout(function() {
             screenHeight = window.innerHeight;
             screenWidth = window.innerWidth;
-            canvas.height = screenHeight;
-            canvas.width = screenWidth;
-        },100);
+            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+        },50);
     });
 }, 25); 
 
