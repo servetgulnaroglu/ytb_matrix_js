@@ -198,11 +198,13 @@ textArea.addEventListener("input", function() {
 setTimeout(function() {
     window.addEventListener("resize", function() {
         
-        //Only way found to avoid a canvas resize bug on mobile
-        screenHeight = document.documentElement.scrollHeight;
-        screenWidth = document.documentElement.scrollWidth;
-        canvas.height = screenHeight;
-        canvas.width = screenWidth;  
+       //Only way found to avoid a canvas resize bug on mobile
+        setTimeout(function() {
+            screenHeight = document.documentElement.scrollHeight;
+            screenWidth = document.documentElement.scrollWidth;
+            canvas.height = screenHeight;
+            canvas.width = screenWidth;
+        }, 200);
     });
 }, 25); 
 
