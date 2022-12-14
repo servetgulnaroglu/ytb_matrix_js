@@ -5,11 +5,13 @@ body {
         justify-content: center;
     margin: 0;
     overflow: hidden;
+    min-height:100vh;
+    min-width:100vw;
 }
 
 canvas {
-    min-height:100vh;
-    min-width:100vw;
+    height:100%;
+    width:100%;
 }
 
 footer {
