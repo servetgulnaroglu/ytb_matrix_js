@@ -199,12 +199,10 @@ setTimeout(function() {
     window.addEventListener("resize", function() {
         
         //Only way found to avoid a canvas resize bug on mobile
-        setTimeout(function() {
-            screenHeight = window.innerHeight;
-            screenWidth = window.innerWidth;
-            canvas.height = screenHeight;
-            canvas.width = screenWidth;
-        }, 200);
+        screenHeight = document.documentElement.scrollHeight;
+        screenWidth = document.documentElement.scrollWidth;
+        canvas.height = screenHeight;
+        canvas.width = screenWidth;  
     });
 }, 25); 
 
