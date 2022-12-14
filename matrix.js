@@ -36,8 +36,8 @@ let charArr = matrix;
 
 //sets height and width of display
 function displayOn() {
-    screenHeight = document.documentElement.scrollHeight;
-    screenWidth = document.documentElement.scrollWidth; 
+    screenHeight = window.innerHeight;
+    screenWidth = window.innerWidth; 
     canvas.height = screenHeight;
     canvas.width = screenWidth;
     columns = screenWidth / fontSize;
@@ -200,11 +200,11 @@ setTimeout(function() {
         
        //Only way found to avoid a canvas resize bug on mobile
         setTimeout(function() {
-            screenHeight = document.documentElement.scrollHeight;
-            screenWidth = document.documentElement.scrollWidth;
+            screenHeight = window.innerHeight;
+            screenWidth = window.innerWidth;
             canvas.height = screenHeight;
             canvas.width = screenWidth;
-        }, 50);
+        },100);
     });
 }, 25); 
 
