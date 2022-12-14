@@ -117,8 +117,8 @@ class Artitect {
 
         if(this.y > screenHeight) {
             this.y = ((Math.random() * screenHeight) / 2) - 50;
-            //this.x = Math.floor(Math.random() * columns) * fontSize;
-            //this.speed = ((-Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
+            this.x = Math.floor(Math.random() * columns) * fontSize;
+            this.speed = ((-Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
         }
     }
 }
@@ -204,7 +204,6 @@ setTimeout(function() {
             screenWidth = window.innerWidth;
             canvas.height = screenHeight;
             canvas.width = screenWidth;
-            columns = screenWidth / fontSize;
         },50);
     });
 }, 25); 
