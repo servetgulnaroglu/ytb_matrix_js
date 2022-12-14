@@ -200,12 +200,9 @@ setTimeout(function() {
         
        //Only way found to avoid a canvas resize bug on mobile
         setTimeout(function() {
-            screenHeight = window.innerHeight;
-            screenWidth = window.innerWidth;
-            canvas.height = screenHeight;
-            canvas.width = screenWidth;
-            columns = screenWidth / fontSize;
-            limit = setlimit();
+
+            displayOn();
+
         },50);
     });
 }, 25); 
