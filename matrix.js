@@ -194,20 +194,20 @@ textArea.addEventListener("input", function() {
 });
 
 
+//prevents infite loop when loading page
 setTimeout(function() {
- //Only way found to maintain correct character population on screen size change   
+ 
     window.addEventListener("resize", function() {
         
-        //location.reload(); //resets values if screen size changes
-        
-        this.setTimeout(function() {
+        //Only way found to avoid a canvas screen sizing bug
+        setTimeout(function() {
             screenHeight = window.innerHeight;
             screenWidth = window.innerWidth;
             canvas.height = screenHeight;
             canvas.width = screenWidth;
         }, 25);
     });
-}, 50); //prevents infite loop when loading page
+}, 25); 
 
 
 //on screenload runs program
