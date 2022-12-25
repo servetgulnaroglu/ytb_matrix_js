@@ -28,8 +28,9 @@ const korean = "ㅂㅈㄷㄱ쇼ㅕㅑㅐㅔㅁㄴㅇㄹ호ㅓㅏㅣㅋㅌㅊ퓨�
 const roman = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const russian = "ЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ".split("");
 
-//makes for a modifiable array
-const keymaker = (arabic + numbers + chinese + greek + hindi + japanese + korean + roman + russian).split(",");
+//modifiable array, commas separate concantenated arrays properly
+let keymaker = arabic +","+ numbers +","+ chinese +","+ greek +","+ hindi +","+ japanese +","+ korean +","+ roman +","+ russian;
+keymaker = keymaker.split(",");
 
 //charcters displayed on screen
 let matrix = keymaker;
@@ -57,6 +58,7 @@ class Artitect {
     constructor(x, y) {
         this.x = x;
         this.y = y;
+        this.i = 0;
     }
 
     //shades of green
@@ -71,7 +73,7 @@ class Artitect {
             return "rgb(0,255,0)";
         }
     }
-    
+
     draw() {
         c.fillStyle = this.greenShade();
         c.font = `${fontSize}px sans-serif`;
@@ -81,7 +83,23 @@ class Artitect {
     update() { 
         this.draw();
 
-        this.value = matrix[randomRange(0, matrix.length - 1)];
+        //checks for user input
+        if(user != undefined && user != "") {
+            
+            //also prevents undefined after deleted characters
+            if(this.i > matrix.length - 1) {
+                this.i = 0;
+            }
+
+            //displays in order what teh user writes
+            this.value = matrix[this.i]; 
+            this.i++;
+            
+        } else {
+            //displays randomly all characters in the array
+            this.value = matrix[randomRange(0, matrix.length - 1)];
+        }
+
         this.speed = ((Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
         this.y += this.speed;    
     }
@@ -102,7 +120,7 @@ function animate() {
 
     let key = new Artitect(Math.floor(Math.random() * columns) * fontSize, 0);
 
-    fallArr.push(key); 
+    fallArr.push(key);
     frames++;
 
     for(let i = 0; i < fallArr.length && frames % 2 == 0; i++) {
