@@ -1,16 +1,16 @@
 const body = document.querySelector(".body");
 const canvas = document.getElementById("canvas");
-const canvas2D = canvas.getContext("2d");
+const c = canvas.getContext("2d");
 const footer = document.querySelector(".footer");
 const textArea = document.getElementById("text-area");
 
 let allow = true; //use for Interval
+let alpha = 0.05;
 let fallArr = [];
 let fontSize = 13;
 let frames = 0;
 
 let off; //to set and clear interval
-let limit; //limit of characters on screen
 let columns;
 let screenHeight;
 let screenWidth;
@@ -29,51 +29,19 @@ const roman = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const russian = "ЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ".split("");
 
 //makes for a modifiable array
-const matrix = (arabic + numbers + chinese + greek + hindi + japanese + korean + roman + russian).split(",");
+const keymaker = (arabic + numbers + chinese + greek + hindi + japanese + korean + roman + russian).split(",");
 
 //charcters displayed on screen
-let charArr = matrix;
+let matrix = keymaker;
 
 //sets height and width of display
-function displayOn() {
+function display() {
     screenHeight = window.innerHeight;
     screenWidth = window.innerWidth; 
     canvas.height = screenHeight;
     canvas.width = screenWidth;
     columns = screenWidth / fontSize;
     textArea.style.visibility = "hidden";
-    limit = setlimit();
-}
-
-
-function setlimit() {
-    if(screenWidth > 1500) {
-        return 300;
-    } else if(screenWidth > 1400 && screenWidth <= 1500) {
-        return 280;
-    } else if(screenWidth > 1300 && screenWidth <= 1400) {
-        return 260;
-    } else if(screenWidth > 1200 && screenWidth <= 1300) {
-        return 240;
-    } else if(screenWidth > 1100 && screenWidth <= 1200) {
-        return 220;
-    } else if(screenWidth > 1000 && screenWidth <= 1100) {
-        return 200;
-    } else if(screenWidth > 900 && screenWidth <= 1000) {
-        return 180;
-    } else if(screenWidth > 800 && screenWidth <= 900) {
-        return 160;
-    } else if(screenWidth > 700 && screenWidth <= 800) {
-        return 140;
-    } else if(screenWidth > 600 && screenWidth <= 700) {
-        return 120;
-    } else if(screenWidth > 500 && screenWidth <= 600) {
-        return 100;
-    } else if(screenWidth > 400 && screenWidth <= 500) {
-        return 80;
-    } else if(screenWidth <= 400) {
-        return 60;
-    }
 }
 
 
@@ -85,66 +53,67 @@ function randomRange(min,max) {
 }
 
 
-//shades of green
-function randomShades() {
-    let dice = randomRange(1,100);
-
-    if(dice == 1) {
-        return "chartreuse";
-    } else if(dice == 2) {
-        return "green";
-    } else {
-        return "rgb(0,255,0)";
-    }
-}
-
-
 class Artitect {
     constructor(x, y) {
         this.x = x;
         this.y = y;
     }
 
-    draw(canvas2D) {
-        this.value = charArr[randomRange(0, charArr.length - 1)];
+    //shades of green
+    greenShade() {
+        let dice = randomRange(1,100);
 
-        this.speed = ((Math.random() * fontSize * 3) / 4) + ((fontSize * 3) / 4);
-
-        canvas2D.fillStyle = randomShades();
-        canvas2D.font = `${fontSize}px sans-serif`;
-        canvas2D.fillText(this.value, this.x, this.y);
-        this.y += this.speed;
-
-        if(this.y > screenHeight) {
-            this.y = ((Math.random() * screenHeight) / 2) - 50;
-            this.x = Math.floor(Math.random() * columns) * fontSize;
-            this.speed = ((-Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
+        if(dice == 1) {
+            return "chartreuse";
+        } else if(dice == 2) {
+            return "green";
+        } else {
+            return "rgb(0,255,0)";
         }
+    }
+    
+    draw() {
+        c.fillStyle = this.greenShade();
+        c.font = `${fontSize}px sans-serif`;
+        c.fillText(this.value, this.x, this.y);
+    }
+
+    update() { 
+        this.draw();
+
+        this.value = matrix[randomRange(0, matrix.length - 1)];
+        this.speed = ((Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
+        this.y += this.speed;    
     }
 }
 
-const keymaker = () => {
+function animate() {
+    
+    requestAnimationFrame(animate);
+    
+    c.fillStyle = `rgba(0, 0, 0, ${alpha})`;
+    c.fillRect(0, 0, screenWidth, screenHeight);
 
-   let character;
-   
-    if(fallArr.length < limit) {
-
-        character = new Artitect(Math.floor(Math.random() * columns) * fontSize, ((Math.random() * screenHeight) / 2) - 50 );
-
-        fallArr.push(character); 
+    if(screenWidth > 1000) {
+        alpha = 0.03;
+    } else {
+        alpha = 0.05;
     }
 
-    canvas2D.fillStyle = "rgba(0,0,0,0.05)";
-    canvas2D.fillRect(0, 0, screenWidth, screenHeight);
+    let key = new Artitect(Math.floor(Math.random() * columns) * fontSize, 0);
+
+    fallArr.push(key); 
+    frames++;
 
     for(let i = 0; i < fallArr.length && frames % 2 == 0; i++) {
 
-        fallArr[i].draw(canvas2D);
-        
-    }
+        fallArr[i].update();
 
-    requestAnimationFrame(keymaker);
-    frames++;
+        if(fallArr[i].y > screenHeight) {
+
+            fallArr.splice(i,1); //deletes off screen characters
+        }
+    }
 };
 
 
@@ -185,11 +154,13 @@ textArea.addEventListener("input", function() {
 
     if(user == "") {
 
-        charArr = matrix; //original array
+        matrix = keymaker; //original array
 
     } else if(user != undefined) {
 
-        charArr = user.split(""); //user input fed to array
+        user = user.split("");
+
+        matrix = user;
     }
 });
 
@@ -201,7 +172,7 @@ setTimeout(function() {
        //Only way found to avoid a canvas resize bug on mobile
         setTimeout(function() {
 
-            displayOn();
+            display();
 
         },50);
     });
@@ -211,7 +182,7 @@ setTimeout(function() {
 //on screenload runs program
 window.onload = function() {
 
-    displayOn();
+    display();
     
-    keymaker();
+    animate();
 };
