@@ -81,7 +81,6 @@ class Artitect {
     }
 
     update() { 
-        this.draw();
 
         //checks for user input
         if(user != undefined && user != "") {
@@ -101,7 +100,9 @@ class Artitect {
         }
 
         this.speed = ((Math.random() * fontSize * 3) / 4) + (fontSize * 3) / 4;
-        this.y += this.speed;    
+        this.y += this.speed;  
+        
+        this.draw(); //position here prevents undefined value
     }
 }
 
@@ -113,7 +114,7 @@ function animate() {
     c.fillRect(0, 0, screenWidth, screenHeight);
 
     if(screenWidth > 1000) {
-        alpha = 0.03;
+        alpha = 0.035;
     } else {
         alpha = 0.05;
     }
