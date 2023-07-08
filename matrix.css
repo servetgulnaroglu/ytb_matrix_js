@@ -1,0 +1,57 @@
+body {
+    background-color: black;
+    display:flex;
+        align-items: center;
+        justify-content: center;
+    margin: 0;
+    min-height:100vh;
+    min-width:100vw;
+    overflow: hidden;
+}
+
+canvas {
+    height:100%;
+    width:100%;
+}
+
+footer {
+    opacity:0.7;
+    position:absolute;
+        bottom:10%;
+    text-align: center;
+    visibility: hidden;
+}
+
+footer a {
+    color: black;
+    font-family: "press start 2p", sans-serif;
+    font-size: 20px;
+    min-width:225px;
+    text-decoration: none;
+    text-shadow: 0px 0px 1px chartreuse;
+}
+
+textarea {
+    background-color: rgb(0,40,0);
+    border: black solid 1px;
+    border-radius:10px;
+    box-shadow: 0px 0px 25px 5px lawngreen;
+    color: chartreuse;
+    cursor: pointer;
+    font-family: "press start 2P", monospace;
+    font-size:16px;
+    height:1rem;
+    min-width:225px;
+    max-width:25vw;
+    opacity:0.7;
+    position:absolute;
+        top:50vh;
+    text-align: center;
+    width:100%;
+    visibility:hidden;
+}
+
+textarea:focus {
+    box-shadow: 0px 0px 50px 10px greenyellow;
+    outline:none;
+}

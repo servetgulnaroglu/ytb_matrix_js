@@ -1,9 +1,40 @@
-<html>
-  <head>
-    <title>Matrix</title>
-  </head>
-  <body style="margin: 0">
-    <canvas width="800" height="800" id="canvas"> </canvas>
-    <script src="matrix.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" >
+
+        <!-- code for favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="favicon_io/site.webmanifest">
+
+        <link rel="stylesheet" type="text/css" href="matrix.css" />
+        
+        <!-- defer loads html first then JS -->
+        <script defer type="text/javascript" src="matrix.js"></script>
+
+        <title>The Matrix</title>
+    </head>
+
+    <body class="body">
+        
+        <canvas id="canvas"></canvas>
+
+        <textarea id="text-area"></textarea>
+
+        <footer class="footer">
+            <a href="https://dany-cervantes-portfolio.pages.dev/" target="_blank">
+                The One
+            </a>
+        </footer>
+
+    </body>
 </html>
